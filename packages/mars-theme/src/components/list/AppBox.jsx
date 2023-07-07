@@ -16,6 +16,20 @@ const AppBox = ({ state, item, isForAdd }) => {
   // Getting App Name out of the Link (/app_builders/appName/)
   const appName = item.link.replace("/app_builders/", "").replace("/", "");
 
+  // Add App To Favourite List
+  const addToFavouriteHandler = () => {
+    setIsFavourite((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    // Gettin the Item Ids from Local Storage to check whether this app is favourite
+    const localStorageArray = JSON.parse(localStorage.getItem("Favourites"));
+
+    if (localStorageArray && localStorageArray.includes(item.id)) {
+      setIsFavourite(true);
+    }
+  }, []);
+
   useEffect(() => {
     // Make the app box checked when it is selected as an app to compare
     if (
@@ -24,12 +38,26 @@ const AppBox = ({ state, item, isForAdd }) => {
     ) {
       setIsChecked(true);
     }
-  }, []);
 
-  // Add App To Favourite List
-  const addToFavouriteHandler = () => {
-    setIsFavourite((prevState) => !prevState);
-  };
+    // Retrieve the existing local storage array or initialize an empty array
+    const localStorageArray =
+      JSON.parse(localStorage.getItem("Favourites")) || [];
+
+    // Add or remove the item ID based on the isFavourite state
+    if (isFavourite) {
+      if (!localStorageArray.includes(item.id)) {
+        localStorageArray.push(item.id);
+      }
+    } else {
+      const index = localStorageArray.indexOf(item.id);
+      if (index !== -1) {
+        localStorageArray.splice(index, 1);
+      }
+    }
+
+    // Update the local storage array
+    localStorage.setItem("Favourites", JSON.stringify(localStorageArray));
+  }, [isFavourite, item.id]);
 
   const checkToCompare = (appName) => {
     if (
@@ -69,16 +97,15 @@ const AppBox = ({ state, item, isForAdd }) => {
 
   return (
     <li className="app-box">
-      <Link link={item.link}>
-        <FeaturedMedia
-          id={item.featured_media}
-          isFavourite={isFavourite}
-          addToFavourite={addToFavouriteHandler}
-        />
-      </Link>
+      <FeaturedMedia
+        id={item.featured_media}
+        isFavourite={isFavourite}
+        addToFavourite={addToFavouriteHandler}
+        buttonLink={item.link}
+      />
 
       <div className="app-box__content">
-        <Link link={item.link} style={{ "text-decoration": "none" }}>
+        <Link link={item.link} style={{ textDecoration: "none" }}>
           <h3>{item.title.rendered}</h3>
         </Link>
         <p>{purifyTexts(item.excerpt.rendered, 30)}</p>

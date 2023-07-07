@@ -13,7 +13,7 @@ const Favourites = () => {
     <>
       <UI>
         <Navigation pageTitle="Favourites" />
-        <AppsList  />
+        <AppsList query="favourites" />
       </UI>
       <CompareFooter visible={compareCtx.isTwoAppSelected} />
     </>

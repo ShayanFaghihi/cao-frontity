@@ -1,7 +1,8 @@
 import { connect } from "frontity";
 
-import likedIcon from "../static/icons/heart.svg"
-import unlikedIcon from "../static/icons/heart-unliked.svg"
+import likedIcon from "../static/icons/heart.svg";
+import unlikedIcon from "../static/icons/heart-unliked.svg";
+import Link from "./link";
 /**
  * The Component that renders a featured media, typically an image. The featured
  * media can represent an individual Post, Page, or Custom Post Type.
@@ -11,9 +12,8 @@ import unlikedIcon from "../static/icons/heart-unliked.svg"
  *
  * @returns A react component.
  */
-const FeaturedMedia = ({ state, id, isFavourite, addToFavourite }) => {
+const FeaturedMedia = ({ state, id, isFavourite, addToFavourite, buttonLink }) => {
   const media = state.source.attachment[id];
-
 
   if (!media) return null;
 
@@ -32,21 +32,20 @@ const FeaturedMedia = ({ state, id, isFavourite, addToFavourite }) => {
 
   return (
     <div className="app-box__image">
-      <img
-        src={media.source_url}
-        srcSet={srcset}
-        width={media?.media_details?.width}
-        height={media?.media_details?.height}
-        alt={media.title.rendered}
-      />
+      <Link link={buttonLink}>
+        <img
+          src={media.source_url}
+          srcSet={srcset}
+          width={media?.media_details?.width}
+          height={media?.media_details?.height}
+          alt={media.title.rendered}
+        />
+      </Link>
       <span
         className={isFavourite ? "like-button" : "like-button unliked"}
         onClick={addToFavourite}
       >
-        <img
-          src={isFavourite ? likedIcon : unlikedIcon}
-          alt="Heart Icon"
-        />
+        <img src={isFavourite ? likedIcon : unlikedIcon} alt="Heart Icon" />
       </span>
     </div>
   );
