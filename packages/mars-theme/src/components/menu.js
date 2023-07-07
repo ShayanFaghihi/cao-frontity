@@ -68,14 +68,16 @@ function MobileMenu({ state, actions }) {
 const MenuToggle = styled.button`
   position: absolute;
   right: 24px;
-  top: 24px;
-  background: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #eee;
   border: 0;
   color: white;
   z-index: 5;
   height: 40px;
   width: 40px;
   display: none;
+  border-radius: 10px;
 
   @media (max-width: 560px) {
     display: flex;

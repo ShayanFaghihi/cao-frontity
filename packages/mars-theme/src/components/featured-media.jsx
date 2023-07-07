@@ -1,6 +1,7 @@
-import { connect, styled } from "frontity";
-import Image from "@frontity/components/image";
+import { connect } from "frontity";
 
+import likedIcon from "../static/icons/heart.svg"
+import unlikedIcon from "../static/icons/heart-unliked.svg"
 /**
  * The Component that renders a featured media, typically an image. The featured
  * media can represent an individual Post, Page, or Custom Post Type.
@@ -10,8 +11,9 @@ import Image from "@frontity/components/image";
  *
  * @returns A react component.
  */
-const FeaturedMedia = ({ state, id }) => {
+const FeaturedMedia = ({ state, id, isFavourite, addToFavourite }) => {
   const media = state.source.attachment[id];
+
 
   if (!media) return null;
 
@@ -29,29 +31,25 @@ const FeaturedMedia = ({ state, id }) => {
       ) || null;
 
   return (
-    <Container isAmp={state.frontity.mode === "amp"}>
-      <StyledImage
-        alt={media.title.rendered}
+    <div className="app-box__image">
+      <img
         src={media.source_url}
         srcSet={srcset}
         width={media?.media_details?.width}
         height={media?.media_details?.height}
+        alt={media.title.rendered}
       />
-    </Container>
+      <span
+        className={isFavourite ? "like-button" : "like-button unliked"}
+        onClick={addToFavourite}
+      >
+        <img
+          src={isFavourite ? likedIcon : unlikedIcon}
+          alt="Heart Icon"
+        />
+      </span>
+    </div>
   );
 };
 
 export default connect(FeaturedMedia);
-
-const Container = styled.div`
-  margin-top: 16px;
-  height: 300px;
-  ${({ isAmp }) => isAmp && "position: relative;"};
-`;
-
-const StyledImage = styled(Image)`
-  display: block;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-`;

@@ -26,6 +26,14 @@ const marsTheme = {
         showOnPost: false,
       },
     },
+    source: {
+      data: {
+        "/favourites/": {
+          isFavourites: true,
+          isReady: true,
+        },
+      },
+    },
   },
 
   /**
@@ -40,9 +48,27 @@ const marsTheme = {
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = false;
       },
+      // In order to get the App Builders before SSR (For showing them on the home page)
+      beforeSSR: async ({ actions }) => {
+        await actions.source.fetch("/app_builders");
+      },
     },
   },
   libraries: {
+    source: {
+      handlers: [
+        {
+          pattern: "/compare/:app_name1?/:app_name2?",
+          func: ({ state, link, params }) => {
+            state.source.data[link] = {
+              app1Name: params.app_name1,
+              app2Name: params.app_name2,
+              isCompare: true,
+            };
+          },
+        },
+      ],
+    },
     html2react: {
       /**
        * Add a processor to `html2react` so it processes the `<img>` tags

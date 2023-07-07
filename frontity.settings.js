@@ -18,25 +18,17 @@ const settings = {
               "/"
             ],
             [
-              "Nature",
-              "/category/nature/"
+              "Favourite",
+              "/favourites"
             ],
             [
-              "Travel",
-              "/category/travel/"
+              "Blog",
+              "/"
             ],
-            [
-              "Japan",
-              "/tag/japan/"
-            ],
-            [
-              "About Us",
-              "/about-us/"
-            ]
           ],
           "featured": {
-            "showOnList": false,
-            "showOnPost": false
+            "showOnList": true,
+            "showOnPost": true
           }
         }
       }
@@ -45,7 +37,14 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "https://test.frontity.org"
+          "url": "https://createapponline.com",
+          postTypes : [
+            {
+              type: "app_builders",
+              endpoint: "app_builders",
+              archive: "/app_builders"
+            }
+          ]
         }
       }
     },
