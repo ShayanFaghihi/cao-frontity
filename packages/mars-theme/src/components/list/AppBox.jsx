@@ -9,7 +9,7 @@ import linkIcon from "../../static/icons/link.svg";
 
 const AppBox = ({ state, item, isForAdd }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [isFavourite,setIsFavourite] = useState(false)
+  const [isFavourite, setIsFavourite] = useState(false);
 
   const compareCtx = useContext(CompareContext);
 
@@ -24,7 +24,6 @@ const AppBox = ({ state, item, isForAdd }) => {
     ) {
       setIsChecked(true);
     }
-
   }, []);
 
   // Add App To Favourite List
@@ -70,14 +69,18 @@ const AppBox = ({ state, item, isForAdd }) => {
 
   return (
     <li className="app-box">
-      <FeaturedMedia
-        id={item.featured_media}
-        isFavourite={isFavourite}
-        addToFavourite={addToFavouriteHandler}
-      />
+      <Link link={item.link}>
+        <FeaturedMedia
+          id={item.featured_media}
+          isFavourite={isFavourite}
+          addToFavourite={addToFavouriteHandler}
+        />
+      </Link>
 
       <div className="app-box__content">
-        <h3>{item.title.rendered}</h3>
+        <Link link={item.link} style={{ "text-decoration": "none" }}>
+          <h3>{item.title.rendered}</h3>
+        </Link>
         <p>{purifyTexts(item.excerpt.rendered, 30)}</p>
         {/* Strip HTML code from excerpt */}
       </div>
@@ -86,12 +89,16 @@ const AppBox = ({ state, item, isForAdd }) => {
         {!isForAdd ? (
           // When it is only for comparing
           <>
-            <Link link={item.link} className="app-box__actions--link-btn">
+            <a
+              href={item.acf.website_url}
+              target="_blank"
+              className="app-box__actions--link-btn"
+            >
               <span>
                 <img src={linkIcon} alt="" />
               </span>
               Link
-            </Link>
+            </a>
             <span
               onClick={() => checkToCompare(appName)}
               className={

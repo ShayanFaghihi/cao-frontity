@@ -337,6 +337,11 @@ main {
   align-items: center;
   gap: 17px;
   text-align: center;
+  transition: box-shadow .3s;
+}
+
+.app-box:hover {
+  box-shadow: 2px 5px 30px rgba(0, 0, 0, 0.2)
 }
 
 @media (width < 768px) {
