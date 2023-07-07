@@ -32,7 +32,7 @@ const MenuModal = ({ ...props }) => {
 };
 
 const MenuOverlay = styled.div`
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(0, 0, 0, 0.9);
   width: 100vw;
   height: 100vh;
   overflow: hidden auto;
@@ -44,7 +44,11 @@ const MenuOverlay = styled.div`
 
 const MenuContent = styled.div`
   z-index: 3;
-  position: relative;
+  position: absolute;
+  top: 100px;
+  right: 50%;
+  width: 100%;
+  transform: translateX(50%);
 `;
 
 const MenuLink = styled(Link)`
@@ -54,6 +58,8 @@ const MenuLink = styled(Link)`
   font-size: 20px;
   text-align: center;
   padding: 1.2rem 0;
+  color: #fff;
+  text-decoration: none;
 
   &:hover,
   &:focus {
@@ -61,7 +67,7 @@ const MenuLink = styled(Link)`
   }
   /* styles for active link */
   &[aria-current="page"] {
-    color: yellow;
+    color: #4c5ec4;
     font-weight: bold;
   }
 `;
