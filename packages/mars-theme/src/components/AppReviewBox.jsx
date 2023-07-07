@@ -61,12 +61,12 @@ const AppReviewBox = ({ state, data, libraries }) => {
               </a>
             </div>
             <div className="app-review__action">
-              <div className="like-button">
+              {/* <div className="like-button">
                 <span className="like-image">
                   <img src={likedIcon} alt="Heart Icon" />
                 </span>
                 <span className="like-counter">{data.acf.liked_count}</span>
-              </div>
+              </div> */}
               <RWebShare
                 data={{
                   url: `https://createapponline.com${state.router.link}`,
