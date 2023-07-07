@@ -3,7 +3,7 @@ import Link from "./link";
 import Nav from "./nav";
 import MobileMenu from "./menu";
 
-import logo from "../static/images/logo-mobile.png";
+import logo from "../static/images/logo.png";
 
 const Header = ({ state }) => {
   return (

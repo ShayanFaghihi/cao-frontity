@@ -172,6 +172,10 @@ header .nav .nav-list .nav-list__link {
   font-weight: 500;
 }
 
+header .logo {
+  width: 130px;
+}
+
 header .logo,
 header .mobile-hamburger {
   cursor: pointer;

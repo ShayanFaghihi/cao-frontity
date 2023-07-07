@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import {connect} from "frontity"
+import { connect } from "frontity";
 import removeIcon from "../static/icons/remove.svg";
 import checkedIcon from "../static/icons/checked.svg";
 import uncheckedIcon from "../static/icons/cancel.svg";
@@ -10,13 +10,13 @@ import starIcon from "../static/icons/Star.svg";
 
 import CompareContext from "../context/compare-context";
 
-const AppCompareColumn = ({state,data,removeApp}) => {
+const AppCompareColumn = ({ state, data, removeApp }) => {
   const compareCtx = useContext(CompareContext);
 
   const media = state.source.attachment[data.featured_media];
 
-    // Getting App Name out of the Link (/app_builders/appName/)
-    const appName = data.link.replace("/app_builders/", "").replace("/","")
+  // Getting App Name out of the Link (/app_builders/appName/)
+  const appName = data.link.replace("/app_builders/", "").replace("/", "");
 
   const removeAppHandler = () => {
     compareCtx.removeAppFromList(appName);
@@ -41,23 +41,22 @@ const AppCompareColumn = ({state,data,removeApp}) => {
   };
 
   // For showing the stars as many as the rating is, we should creat an array and loop using map inside of JSX
-  const flexRating = data.acf.design_flexibility_rating;
-  const flexRatingArr = Array.from({ length: flexRating }, (_, index) => index);
+  const starRating = (featureRate) => {
+    return Array.from({ length: featureRate }, (_, index) => index);
+  };
+
   return (
     <div className="compare-table__app table-column">
       <ul className="compare-table__list">
         <li className="compare-table__list--item">
           <div className="app">
-          <img
+            <img
               src={media.source_url}
               alt={`${data.title.rendered} featured image`}
             />
             <div className="app__title">
               <h2>{data.title.rendered}</h2>
-              <a href={data.acf.website_url}>
-                {" "}
-                {data.acf.website_url}{" "}
-              </a>
+              <a href={data.acf.website_url}> {data.acf.website_url} </a>
             </div>
             <span className="remove-app" onClick={removeAppHandler}>
               <img src={removeIcon} alt="" />
@@ -69,10 +68,7 @@ const AppCompareColumn = ({state,data,removeApp}) => {
           </p>
         </li>
         <li className="compare-table__list--item logo">
-          <img
-            src={data.acf.product_logo}
-            alt={data.title.rendered}
-          />
+          <img src={data.acf.product_logo} alt={data.title.rendered} />
         </li>
         <li className="compare-table__list--item">
           {data.acf.free_version.map((item) => item)}
@@ -86,11 +82,7 @@ const AppCompareColumn = ({state,data,removeApp}) => {
             switch (item) {
               case "Android":
                 return (
-                  <img
-                    key="android"
-                    src={androidIcon}
-                    alt="Android Suppport"
-                  />
+                  <img key="android" src={androidIcon} alt="Android Suppport" />
                 );
               case "IOS":
                 return <img key="ios" src={iosIcon} alt="Ios Support" />;
@@ -111,8 +103,48 @@ const AppCompareColumn = ({state,data,removeApp}) => {
         </li>
         <li className="compare-table__list--item">
           <div className="compare-table__list--item-rating">
-            {/* Show stars as many as the flexRatingArr length */}
-            {flexRatingArr.map((_, index) => (
+            {/* Show stars as many as the Flexibility Rating length */}
+            {starRating(data.acf.design_flexibility_rating).map((_, index) => (
+              <img key={index} src={starIcon} alt="Star Rating" />
+            ))}
+          </div>
+        </li>
+        <li className="compare-table__list--item">
+          <div className="compare-table__list--item-rating">
+            {/* Show stars as many as the Ease of Use length */}
+            {starRating(data.acf.ease_of_use_rating).map((_, index) => (
+              <img key={index} src={starIcon} alt="Star Rating" />
+            ))}
+          </div>
+        </li>
+        <li className="compare-table__list--item">
+          <div className="compare-table__list--item-rating">
+            {/* Show stars as many as the Support Rating length */}
+            {starRating(data.acf.support_rating).map((_, index) => (
+              <img key={index} src={starIcon} alt="Star Rating" />
+            ))}
+          </div>
+        </li>
+        <li className="compare-table__list--item">
+          <div className="compare-table__list--item-rating">
+            {/* Show stars as many as the Fun Factor Rating length */}
+            {starRating(data.acf.fun_factor_rating).map((_, index) => (
+              <img key={index} src={starIcon} alt="Star Rating" />
+            ))}
+          </div>
+        </li>
+        <li className="compare-table__list--item">
+          <div className="compare-table__list--item-rating">
+            {/* Show stars as many as the Affordability Rating length */}
+            {starRating(data.acf.affordability_rating).map((_, index) => (
+              <img key={index} src={starIcon} alt="Star Rating" />
+            ))}
+          </div>
+        </li>
+        <li className="compare-table__list--item">
+          <div className="compare-table__list--item-rating">
+            {/* Show stars as many as the Overall Rating length */}
+            {starRating(data.acf.rating).map((_, index) => (
               <img key={index} src={starIcon} alt="Star Rating" />
             ))}
           </div>

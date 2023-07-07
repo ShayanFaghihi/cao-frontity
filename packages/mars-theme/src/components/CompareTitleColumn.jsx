@@ -26,6 +26,21 @@ const CompareTitleColumn = () => {
           <h3>Design Flexibility</h3>
         </li>
         <li className="compare-table__list--item">
+          <h3>Ease of Use</h3>
+        </li>
+        <li className="compare-table__list--item">
+          <h3>Support</h3>
+        </li>
+        <li className="compare-table__list--item">
+          <h3>Fun Factor</h3>
+        </li>
+        <li className="compare-table__list--item">
+          <h3>Affordability</h3>
+        </li>
+        <li className="compare-table__list--item">
+          <h3>Overall Rating</h3>
+        </li>
+        <li className="compare-table__list--item">
           <h3>Build Simple App</h3>
         </li>
         <li className="compare-table__list--item">
