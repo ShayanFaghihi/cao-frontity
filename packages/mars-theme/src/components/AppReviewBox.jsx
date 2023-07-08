@@ -162,7 +162,7 @@ const AppReviewBox = ({ state, data, libraries }) => {
               <li className="app-review-list__item">
                 <span className="item">App Builder:</span>
                 <span className="app-builder">
-                  <img src={""} alt={`${data.title.rendered} logo`} />
+                  <img src={data.acf.product_logo} alt={`${data.title.rendered} logo`} />
                 </span>
               </li>
               <li className="app-review-list__item">

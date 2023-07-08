@@ -19,7 +19,6 @@ const Compare = ({ state, actions }) => {
 
   // When the Compare page is the landing page, it should inject the router parameters to the context state
   useEffect(() => {
-    console.log(`app1 : ${app1Name} --- app2: ${app2Name}`);
     if (app1Name && app2Name) {
       compareCtx.compareAppBuilders(app1Name, app2Name);
     } else {
