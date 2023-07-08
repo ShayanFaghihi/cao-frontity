@@ -14,26 +14,33 @@ export const CompareContexProvider = (props) => {
     app2Name: "",
   });
 
-  const compareAppBuildersHandler = (appName) => {
-    if (
-      appBuildersToCompare.app1Name === "" &&
-      appBuildersToCompare.app2Name === ""
-    ) {
-      setAppBuildersToCompare({ app1Name: appName, app2Name: "" });
-    } else if (
-      appBuildersToCompare.app1Name === "" &&
-      appBuildersToCompare.app2Name !== ""
-    ) {
-      setAppBuildersToCompare({
-        app1Name: appBuildersToCompare.app2Name,
-        app2Name: appName,
-      });
-      setIsTwoAppSelected(true);
+  const compareAppBuildersHandler = (appName, appName2) => {
+    if (!appName2) {
+      // When it is about adding one app to the compare list only
+      if (
+        appBuildersToCompare.app1Name === "" &&
+        appBuildersToCompare.app2Name === ""
+      ) {
+        setAppBuildersToCompare({ app1Name: appName, app2Name: "" });
+      } else if (
+        appBuildersToCompare.app1Name === "" &&
+        appBuildersToCompare.app2Name !== ""
+      ) {
+        setAppBuildersToCompare({
+          app1Name: appBuildersToCompare.app2Name,
+          app2Name: appName,
+        });
+        setIsTwoAppSelected(true);
+      } else {
+        setAppBuildersToCompare((prevState) => ({
+          ...prevState,
+          app2Name: appName,
+        }));
+        setIsTwoAppSelected(true);
+      }
     } else {
-      setAppBuildersToCompare((prevState) => ({
-        ...prevState,
-        app2Name: appName,
-      }));
+      // For the time we want to add both app builders to compare list together
+      setAppBuildersToCompare({ app1Name: appName, app2Name: appName2 });
       setIsTwoAppSelected(true);
     }
   };

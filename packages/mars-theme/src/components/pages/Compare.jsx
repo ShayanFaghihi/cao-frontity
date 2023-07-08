@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { connect } from "frontity";
 import UI from "../UI";
 import Navigation from "../Navigation";
@@ -17,6 +17,16 @@ const Compare = ({ state, actions }) => {
   const app1Name = data.app1Name;
   const app2Name = data.app2Name;
 
+  // When the Compare page is the landing page, it should inject the router parameters to the context state
+  useEffect(() => {
+    console.log(`app1 : ${app1Name} --- app2: ${app2Name}`);
+    if (app1Name && app2Name) {
+      compareCtx.compareAppBuilders(app1Name, app2Name);
+    } else {
+      compareCtx.compareAppBuilders(app1Name);
+    }
+  }, []);
+
   const app1Data =
     state.source.app_builders[state.source.get(`/app_builders/${app1Name}`).id];
   const app2Data =
@@ -26,10 +36,14 @@ const Compare = ({ state, actions }) => {
     switch (appName) {
       // Check whether we have other app on the compare page, otherwise we should go to the compare page
       case app1Name:
-        app2Name ? actions.router.set(`/compare/${app2Name}`) : actions.router.set("/compare");
+        app2Name
+          ? actions.router.set(`/compare/${app2Name}`)
+          : actions.router.set("/compare");
         break;
       case app2Name:
-        app1Name ? actions.router.set(`/compare/${app1Name}`) : actions.router.set("/compare");
+        app1Name
+          ? actions.router.set(`/compare/${app1Name}`)
+          : actions.router.set("/compare");
         break;
       default:
         actions.router.set(`/compare/`);
