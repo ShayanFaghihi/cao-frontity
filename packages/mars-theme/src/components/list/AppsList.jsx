@@ -19,7 +19,7 @@ const AppsList = ({ state, iterationLimit, isForAdd, query }) => {
     if (localStotageItems) {
       setFavouriteApps(localStotageItems);
     }
-  }, [query,data]);
+  }, []);
 
   if (query && query === "favourites") {
     data = data.filter((appBuilder) => favouriteApps.includes(appBuilder.id));

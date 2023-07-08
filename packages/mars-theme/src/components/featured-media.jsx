@@ -12,7 +12,13 @@ import Link from "./link";
  *
  * @returns A react component.
  */
-const FeaturedMedia = ({ state, id, isFavourite, addToFavourite, buttonLink }) => {
+const FeaturedMedia = ({
+  state,
+  id,
+  isFavourite,
+  addToFavourite,
+  buttonLink,
+}) => {
   const media = state.source.attachment[id];
 
   if (!media) return null;
@@ -32,7 +38,17 @@ const FeaturedMedia = ({ state, id, isFavourite, addToFavourite, buttonLink }) =
 
   return (
     <div className="app-box__image">
-      <Link link={buttonLink}>
+      {buttonLink ? (
+        <Link link={buttonLink}>
+          <img
+            src={media.source_url}
+            srcSet={srcset}
+            width={media?.media_details?.width}
+            height={media?.media_details?.height}
+            alt={media.title.rendered}
+          />
+        </Link>
+      ) : (
         <img
           src={media.source_url}
           srcSet={srcset}
@@ -40,7 +56,7 @@ const FeaturedMedia = ({ state, id, isFavourite, addToFavourite, buttonLink }) =
           height={media?.media_details?.height}
           alt={media.title.rendered}
         />
-      </Link>
+      )}
       <span
         className={isFavourite ? "like-button" : "like-button unliked"}
         onClick={addToFavourite}

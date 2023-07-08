@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { connect } from "frontity";
 import { RWebShare } from "react-web-share";
 
@@ -13,6 +13,44 @@ import starIcon from "../static/icons/Star.svg";
 import calendarIcon from "../static/icons/calendar.svg";
 
 const AppReviewBox = ({ state, data, libraries }) => {
+  const [isFavourite, setIsFavourite] = useState(false);
+
+
+  // Add App To Favourite List
+  const addToFavouriteHandler = () => {
+    setIsFavourite((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    // Gettin the Item Ids from Local Storage to check whether this app is favourite
+    const localStorageArray = JSON.parse(localStorage.getItem("Favourites"));
+
+    if (localStorageArray && localStorageArray.includes(data.id)) {
+      setIsFavourite(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Retrieve the existing local storage array or initialize an empty array
+    const localStorageArray =
+      JSON.parse(localStorage.getItem("Favourites")) || [];
+
+    // Add or remove the item ID based on the isFavourite state
+    if (isFavourite) {
+      if (!localStorageArray.includes(data.id)) {
+        localStorageArray.push(data.id);
+      }
+    } else {
+      const index = localStorageArray.indexOf(data.id);
+      if (index !== -1) {
+        localStorageArray.splice(index, 1);
+      }
+    }
+
+    // Update the local storage array
+    localStorage.setItem("Favourites", JSON.stringify(localStorageArray));
+  }, [isFavourite,data.id]);
+
   // For showing the stars as many as the rating is, we should creat an array and loop using map inside of JSX
   // Desing Flexibility
   const flexRating = data.acf.design_flexibility_rating;
@@ -48,7 +86,11 @@ const AppReviewBox = ({ state, data, libraries }) => {
     <section className="app-review-section">
       <div className="app-review-box">
         <div className="app-review-box__image">
-          <FeaturedMedia id={data.featured_media} />
+          <FeaturedMedia
+            id={data.featured_media}
+            isFavourite={isFavourite}
+            addToFavourite={addToFavouriteHandler}
+          />
         </div>
         <div className="app-review-box__content">
           <div className="app-review-box__content--actions">
