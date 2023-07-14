@@ -2,13 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { connect } from "frontity";
 import Link from "../link";
 import FeaturedMedia from "../featured-media";
-import {decode} from 'html-entities';
+import { decode } from "html-entities";
 
 import CompareContext from "../../context/compare-context";
 
 import linkIcon from "../../static/icons/link.svg";
 
-const AppBox = ({  item, isForAdd }) => {
+const AppBox = ({ item, isForAdd }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
 
@@ -92,7 +92,7 @@ const AppBox = ({  item, isForAdd }) => {
     } else {
       purifiedText = text.replace(/(<([^>]+)>)/gi, "");
     }
-
+    // Decoding HTML from showing entitities (From  in today&#8217;s competitive  ----> in today's competitive)
     return decode(purifiedText);
   };
 
