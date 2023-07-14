@@ -23,6 +23,7 @@
     "@frontity/tiny-router": "^1.4.4",
     "@frontity/wp-source": "^1.11.7",
     "frontity": "^1.17.2",
+    "html-entities": "^2.4.0",
     "react-modal": "^3.16.1",
     "react-web-share": "^2.0.2"
   }

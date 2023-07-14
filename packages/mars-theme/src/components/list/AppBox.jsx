@@ -2,12 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { connect } from "frontity";
 import Link from "../link";
 import FeaturedMedia from "../featured-media";
+import {decode} from 'html-entities';
 
 import CompareContext from "../../context/compare-context";
 
 import linkIcon from "../../static/icons/link.svg";
 
-const AppBox = ({ state, item, isForAdd }) => {
+const AppBox = ({  item, isForAdd }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
 
@@ -92,7 +93,7 @@ const AppBox = ({ state, item, isForAdd }) => {
       purifiedText = text.replace(/(<([^>]+)>)/gi, "");
     }
 
-    return purifiedText;
+    return decode(purifiedText);
   };
 
   return (
