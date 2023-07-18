@@ -14,6 +14,7 @@ import Compare from "./pages/Compare";
 import Favourites from "./pages/Favourites";
 
 import { CompareContexProvider } from "../context/compare-context";
+import SearchResults from "./pages/SearchResults";
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.
@@ -51,6 +52,7 @@ const Theme = ({ state }) => {
           <Loading when={data.isFetching} />
           <Compare when={data.isCompare} />
           <Home when={data.isHome} />
+          <SearchResults when={data.isSearch} />
           <Favourites when={data.isFavourites} />
           <List when={data.isArchive} />
           <SingleReview when={data.isPostType} />

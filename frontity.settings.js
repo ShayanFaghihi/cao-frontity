@@ -2,7 +2,7 @@ const settings = {
   name: "frontity",
   state: {
     frontity: {
-      url: "https://test.frontity.org",
+      url: "https://createapponline.com/",
       title:
         "Create App Online",
       description:
@@ -29,7 +29,7 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          url: "https://createapponline.com",
+          url: "https://createapponline.com/",
           postTypes: [
             {
               type: "app_builders",

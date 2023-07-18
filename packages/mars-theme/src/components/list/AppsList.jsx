@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "frontity";
 import AppBox from "./AppBox";
 
-const AppsList = ({ state, iterationLimit, isForAdd, query }) => {
+const AppsList = ({ state, iterationLimit, isForAdd, query, searchQuery }) => {
   const [favouriteApps, setFavouriteApps] = useState([]);
 
   // Get the data of the current list.
@@ -25,17 +25,27 @@ const AppsList = ({ state, iterationLimit, isForAdd, query }) => {
     data = data.filter((appBuilder) => favouriteApps.includes(appBuilder.id));
   }
 
+  if (query && query === "search") {
+    data = data.filter((appBuilder) =>
+      state.source["app_builders"][appBuilder.id].content.rendered.includes(
+        searchQuery
+      )
+    );
+  }
+
   return (
-    <ul className="app-list-section">
-      {data ? (
-        data.map(({ type, id }) => {
-          const item = state.source[type][id];
-          return <AppBox key={item.id} item={item} isForAdd={isForAdd} />;
-        })
+    <>
+      {data.length > 0 ? (
+        <ul className="app-list-section">
+          {data.map(({ type, id }) => {
+            const item = state.source[type][id];
+            return <AppBox key={item.id} item={item} isForAdd={isForAdd} />;
+          })}
+        </ul>
       ) : (
         <p className="error-text">There are no App Builders</p>
       )}
-    </ul>
+    </>
   );
 };
 
