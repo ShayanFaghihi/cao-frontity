@@ -8,7 +8,7 @@ import CompareContext from "../../context/compare-context";
 
 import linkIcon from "../../static/icons/link.svg";
 
-const AppBox = ({ item, isForAdd }) => {
+const AppBox = ({ item, isForAdd, changeFavourites }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
 
@@ -20,6 +20,7 @@ const AppBox = ({ item, isForAdd }) => {
   // Add App To Favourite List
   const addToFavouriteHandler = () => {
     setIsFavourite((prevState) => !prevState);
+    changeFavourites(); //In order to trigger the favourite page useEffect to update itself on the fly
   };
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import AppBox from "./AppBox";
 
 const AppsList = ({ state, iterationLimit, isForAdd, query, searchQuery }) => {
   const [favouriteApps, setFavouriteApps] = useState([]);
+  const [favouritesAreChanged, setFavouritesAreChanged] = useState(false); //This state will trigger the useEffect
 
   // Get the data of the current list.
   let data = state.source.get("/app_builders").items;
@@ -19,7 +20,7 @@ const AppsList = ({ state, iterationLimit, isForAdd, query, searchQuery }) => {
     if (localStotageItems) {
       setFavouriteApps(localStotageItems);
     }
-  }, []);
+  }, [favouritesAreChanged]);
 
   if (query && query === "favourites") {
     data = data.filter((appBuilder) => favouriteApps.includes(appBuilder.id));
@@ -33,13 +34,25 @@ const AppsList = ({ state, iterationLimit, isForAdd, query, searchQuery }) => {
     );
   }
 
+  // To update the favourite apps page on the fly, we need to trigger useEffect everytime a change is triggered
+  const changeFavouritesHandler = () => {
+    setFavouritesAreChanged((prevState) => !prevState);
+  };
+
   return (
     <>
       {data.length > 0 ? (
         <ul className="app-list-section">
           {data.map(({ type, id }) => {
             const item = state.source[type][id];
-            return <AppBox key={item.id} item={item} isForAdd={isForAdd} />;
+            return (
+              <AppBox
+                key={item.id}
+                item={item}
+                isForAdd={isForAdd}
+                changeFavourites={changeFavouritesHandler}
+              />
+            );
           })}
         </ul>
       ) : (
