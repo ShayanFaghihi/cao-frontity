@@ -3,8 +3,7 @@ const settings = {
   state: {
     frontity: {
       url: "https://createapponline.com/",
-      title:
-        "Create App Online",
+      title: "Create App Online",
       description:
         "Explore the top low and no-code online app builders, including Wix, FlutterFlow, Good Barber, Andromo, and Shopify. Our comprehensive review will help you make an informed decision for your next app development project. Discover the features, benefits, and limitations of each platform to create stunning apps without extensive coding knowledge. Start building your dream app today!",
     },
@@ -29,7 +28,7 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          url: "https://createapponline.com/",
+          url: "https://abooa2.sg-host.com/",
           postTypes: [
             {
               type: "app_builders",
@@ -52,7 +51,7 @@ const settings = {
           },
         },
       },
-    }
+    },
   ],
 };
 
