@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import UI from "../UI";
-import Navigation from "../Navigation";
-import AppsList from "../list/AppsList";
-import CompareFooter from "../CompareFooter";
+import UI from "../components/UI";
+import Navigation from "../components/Navigation";
+import AppsList from "../components/list/AppsList";
+import CompareFooter from "../components/CompareFooter";
 
-import CompareContext from "../../context/compare-context";
+import CompareContext from "../context/compare-context";
 
 const Favourites = () => {
   const compareCtx = useContext(CompareContext);

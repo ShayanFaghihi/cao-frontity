@@ -28,9 +28,9 @@ const AppsList = ({ state, iterationLimit, isForAdd, query, searchQuery }) => {
 
   if (query && query === "search") {
     data = data.filter((appBuilder) =>
-      state.source["app_builders"][appBuilder.id].content.rendered.includes(
-        searchQuery
-      )
+      state.source["app_builders"][appBuilder.id].content.rendered
+        .toLowerCase()
+        .includes(searchQuery)
     );
   }
 

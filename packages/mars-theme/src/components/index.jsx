@@ -7,14 +7,14 @@ import Title from "./title";
 
 import globalStyles from "./styles/App.css";
 
-import PageError from "./pages/Error";
-import Home from "./pages/Home";
-import SingleReview from "./pages/SingleReview";
-import Compare from "./pages/Compare";
-import Favourites from "./pages/Favourites";
+import PageError from "../pages/Error";
+import Home from "../pages/Home";
+import SingleReview from "../pages/SingleReview";
+import Compare from "../pages/Compare";
+import Favourites from "../pages/Favourites";
 
 import { CompareContexProvider } from "../context/compare-context";
-import SearchResults from "./pages/SearchResults";
+import SearchResults from "../pages/SearchResults";
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.

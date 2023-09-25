@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import { connect } from "frontity";
-import UI from "../UI";
-import Navigation from "../Navigation";
-import AppCompareColumn from "../AppCompareColumn";
-import AddCompareColumn from "../AddCompareColumn";
-import CompareTitleColumn from "../CompareTitleColumn";
+import UI from "../components/UI";
+import Navigation from "../components/Navigation";
+import AppCompareColumn from "../components/AppCompareColumn";
+import AddCompareColumn from "../components/AddCompareColumn";
+import CompareTitleColumn from "../components/CompareTitleColumn";
 
-import CompareContext from "../../context/compare-context";
+import CompareContext from "../context/compare-context";
 
 const Compare = ({ state, actions }) => {
   // Needing to update the Context whenever the compare page is loaded manually
