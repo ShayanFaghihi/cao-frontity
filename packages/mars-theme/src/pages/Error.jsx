@@ -1,5 +1,5 @@
 import { connect } from "frontity";
-import UI from "../UI";
+import UI from "../components/UI";
 
 const description404 = (
   <>
@@ -13,8 +13,8 @@ const description404 = (
 const description = (
   <>
     Don&apos;t panic! Seems like you encountered an error. If this persists,
-    <a href="mailto:info@createapponline.com/"> let us know </a> or try refreshing
-    your browser.
+    <a href="mailto:info@createapponline.com/"> let us know </a> or try
+    refreshing your browser.
   </>
 );
 

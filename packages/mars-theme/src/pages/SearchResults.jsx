@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import { connect } from "frontity";
-import UI from "../UI";
-import AppsList from "../list/AppsList";
-import SearchField from "../SearchField";
-import CompareContext from "../../context/compare-context";
-import CompareFooter from "../CompareFooter";
+import UI from "../components/UI";
+import AppsList from "../components/list/AppsList";
+import SearchField from "../components/SearchField";
+import CompareContext from "../context/compare-context";
+import CompareFooter from "../components/CompareFooter";
 
 const reverseFormat = (query) => query.replace("+", " ");
 
 const SearchResults = ({ state }) => {
   const compareCtx = useContext(CompareContext);
-  // Get information about the current URL.
+  // Get information about the current URL.  (?s='query')
   const data = state.source.get(state.router.link);
   // data.searchQuery → query done to get search results
   const { searchQuery } = data;

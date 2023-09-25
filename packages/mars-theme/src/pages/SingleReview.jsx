@@ -1,13 +1,13 @@
 import { useEffect, useContext } from "react";
 import { connect } from "frontity";
-import UI from "../UI";
-import Navigation from "../Navigation";
-import AppReviewBox from "../AppReviewBox";
-import SimilarAppList from "../SimilarAppList";
-import CompareFooter from "../CompareFooter";
+import UI from "../components/UI";
+import Navigation from "../components/Navigation";
+import AppReviewBox from "../components/AppReviewBox";
+import SimilarAppList from "../components/SimilarAppList";
+import CompareFooter from "../components/CompareFooter";
 
-import List from "../list";
-import CompareContext from "../../context/compare-context";
+import List from "../components/list";
+import CompareContext from "../context/compare-context";
 
 /**
  * The Post component that Mars uses to render any kind of "post type", like
@@ -29,8 +29,7 @@ import CompareContext from "../../context/compare-context";
  * @returns The {@link Post} element rendered.
  */
 const SingleReview = ({ state, actions, libraries }) => {
-
-  const compareCtx = useContext(CompareContext)
+  const compareCtx = useContext(CompareContext);
 
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
