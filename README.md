@@ -1,6 +1,6 @@
 # Create App Online
 
-![Bet Technology Enterprise App Builder Dashboard](/Screenshot.png)
+![Bet Technology Enterprise App Builder Dashboard](Screenshot.png)
 
 ## Overview
 
@@ -18,7 +18,7 @@ This repository contains the source code for the Bet Technology Enterprise App B
 
 ## Technology Stack
 
-- **React**: The frontend of the dashboard is built using React, which allows for efficient component-based development.
+- **React**: The frontend of the dashboard is built using React + Vite, which allows for efficient component-based development.
 
 - **React Router**: React Router is used for managing the application's routing and navigation.
 
@@ -51,7 +51,7 @@ To run follow these steps:
 4. Start the development server:
 
    ```shell
-   npm start
+   npm run dev
    ```
 
 5. Open your web browser and visit `http://localhost:3000` to view the dashboard.
