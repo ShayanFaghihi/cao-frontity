@@ -1,80 +1,72 @@
-# frontity
+# Create App Online
 
-This project was bootstrapped with [Frontity](https://frontity.org/).
+![Bet Technology Enterprise App Builder Dashboard](/Screenshot.png)
 
-#### Table of Contents
+## Overview
 
-- [Launch a development server](#launch-a-development-server)
-- [Create your custom theme](#create-your-custom-theme)
-- [Create a production-ready build](#create-a-production-ready-build)
-- [Deploy](#deploy)
+This repository contains the source code for the Bet Technology Enterprise App Builder Dashboard, a Single Page Application (SPA) built using React. The dashboard is designed to interact with a WordPress headless CMS via its REST API to display custom post types related to enterprise online app builders. Users can explore and compare various app builders, view detailed information about individual app builders, add them to their favorites list, and compare their features side by side.
 
-### Launch a development server
+## Features
 
-```
-npx frontity dev
-```
+- **Display Custom Post Types**: The dashboard fetches and displays data from the WordPress headless CMS REST API, showcasing custom post types related to enterprise online app builders.
 
-Runs the app in development mode. Open http://localhost:3000 to view it in the browser.
+- **Search App Builders**: Users can utilize the live search functionality to quickly find app builders of interest.
 
-The site will automatically reload if you make changes inside the `packages` folder. You will see the build errors in the console.
+- **Compare App Builders**: Similar to comparing e-commerce products, users can compare different app builders side by side to make informed decisions.
 
-> Have a look at our [Quick Start Guide](https://docs.frontity.org/getting-started/quick-start-guide)
+- **Server-Side Rendering**: To enhance performance and search engine optimization (SEO), the Frontity library has been employed to handle server-side rendering.
 
-### Create your custom theme
+## Technology Stack
 
-```
-npx frontity create-package your-custom-theme
-```
+- **React**: The frontend of the dashboard is built using React, which allows for efficient component-based development.
 
-Use the command `npx frontity create-package` to create a new package that can be set in your `frontity.settings.js` as your theme.
+- **React Router**: React Router is used for managing the application's routing and navigation.
 
-> Have a look at our blog post [How to Create a React WordPress Theme in 30 Minutes](https://frontity.org/blog/how-to-create-a-react-theme-in-30-minutes/)
+- **Fetch API**: To interact with the WordPress headless CMS REST API and retrieve data.
 
-### Create a production-ready build
+- **Frontity Library**: Frontity is employed for server-side rendering, resulting in improved performance and SEO benefits.
 
-```
-npx frontity build
-```
+## Getting Started
 
-Builds the app for production to the `build` folder.
+To run follow these steps:
 
-This will create a `/build` folder with a `server.js` (a [serverless function](https://vercel.com/docs/v2/serverless-functions/introduction)) file and a `/static` folder with all your javascript files and other assets.
+1. Clone this repository to your local machine:
 
-Your app is ready to be deployed.
+   ```shell
+   git clone https://github.com/ShayanFaghihi/cao-frontity.git
+   ```
 
-> Get more info about [Frontity's architecture](https://docs.frontity.org/architecture)
+2. Navigate to the project directory:
 
-### Deploy
+   ```shell
+   cd cao-frontity
+   ```
 
-With the files generated in the _build_ you can deploy your project.
+3. Install the project dependencies:
 
-#### As a node app
+   ```shell
+   npm install
+   ```
 
-Use `npx frontity serve` to run it like a normal Node app.
+4. Start the development server:
 
-This command generates (and runs) a small web server that uses the generated `server.js` and `/static` to serve your content.
+   ```shell
+   npm start
+   ```
 
-#### As a serverless service
+5. Open your web browser and visit `http://localhost:3000` to view the dashboard.
 
-Upload your `static` folder to a CDN and your `server.js` file to a serverless service, like Vercel or Netlify.
+## Live Demo
 
-> Get more info about [how to deploy](https://docs.frontity.org/deployment) a Frontity project
+Check out the live demo of the Bet Technology Enterprise App Builder Dashboard on Vercel: [Live Demo](https://cao-frontity.vercel.app/)
 
----
+## License
 
-## Frontity Community
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-[![Community Forum Topics](https://img.shields.io/discourse/topics?color=blue&label=community%20forum&server=https%3A%2F%2Fcommunity.frontity.org%2F)](https://community.frontity.org/) [![Twitter: frontity](https://img.shields.io/twitter/follow/frontity?style=social)](https://twitter.com/frontity) [![Frontity GitHub Stars](https://img.shields.io/github/stars/frontity/frontity?style=social)](https://github.com/frontity/frontity)
+## Contact
 
-👋 &nbsp;We'd love for you to be part of the Frontity community. There are a variety of different ways in which you can find more information about the project, join in discussions about it, and also get involved:
+If you have any questions or feedback, feel free to reach out to the project owner:
 
-- **[Learn Frontity](https://frontity.org/learn/)**: in this page you can find Frontity's primary learning resources, including documentation resources, example projects, videos, and more.
-- **[Community forum](https://community.frontity.org/)**: Frontity's forum is a great place to ask questions, help fellow Frontity users, and share your projects. It's also where you can keep track of the development work, join feature discussions, and collaborate on building Frontity itself.
-- **[GitHub](https://github.com/frontity/frontity)**: for bug reports and code contributions. Questions are answered in the community forum.
-
-If you're looking for news and updates about Frontity, [Twitter](https://twitter.com/frontity) and the [blog](https://frontity.org/blog/) are pretty good places to start. You can also join the **[Frontity Newsletter](https://frontity.org/newsletter/)** and stay updated on new releases and features, learning resources, and community news.
-
-### Contributing
-
-Frontity welcomes contributions in all forms. There are many different ways to support the project. Check out the **[How to contribute](https://docs.frontity.org/contributing/how-to-contribute)** page for ideas on contributing and helping make Frontity better.
+- **Name**: Shayan Faghihi
+- **Email**: shayan.faghihi93@gmail.com
